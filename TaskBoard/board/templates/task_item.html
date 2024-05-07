@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}
+    Ticket Item
+{% endblock %}
+
+{% block content %}
+<br>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Entry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Id</th>
+      <td>{{ items[0][0] }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Username</th>
+      <td>{{ items[0][1] }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Title</th>
+      <td>{{ items[0][2] }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Status</th>
+      <td>{{ items[0][4] }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Description</th>
+      <td>{{ items[0][3] | safe }}</td>
+    </tr>
+  </tbody>
+</table>
+<a class="btn btn-dark" href="{{ url_for('table_page') }}">Back to Tasks</a>
+<!--
+    <ol>
+        <li>{{ items.id }}</li>
+        <li>{{ items.name }}</li>
+        <li>{{ items.barcode }}</li>
+        <li>{{ items.price }}</li>
+        <li>{{ items.description }}</li>
+    </ol>
+    -->
+{% endblock %}

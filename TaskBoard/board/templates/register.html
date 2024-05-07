@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %}
+   Home
+{% endblock %}
+
+{% block content %}
+
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background-image: url('{{ url_for('static', filename='board.jpg') }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+
+    .login-form {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        z-index: 1;
+        width: 55%;
+        max-width: 80%;
+        height: auto;
+        max-height: 80%;
+        overflow-y: auto;
+    }
+       .btn-center {
+        text-align: center;
+    }
+</style>
+
+<div class="container">
+    <div class="login-form">
+        <br>
+        <img class="mb-4 mx-auto d-block" src="{{ url_for('static', filename='travel.png') }}" alt="" style="width:50%">
+        <form method="POST" class="form-register" action="/register" style="color:black">
+            <h1 class="h3 mb-3 font-weight-normal text-center">Get your FREE account now</h1>
+            <div class="row">
+                <div class="col">
+                    <label for="Username">Username</label>
+                    <input type="text" class="form-control" id="Username" name="Username" placeholder="maxmuster">
+                </div>
+                <div class="col">
+                    <label for="Email">Email</label>
+                    <input type="email" class="form-control" id="Email" name="Email" placeholder="Email">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <label for="Password1">Password</label>
+                    <input type="password" class="form-control" id="Password1" name="Password1" placeholder="Password">
+                </div>
+                <div class="col">
+                    <label for="Password2">Confirm password</label>
+                    <input type="password" class="form-control" id="Password2" name="Password2" placeholder="Password">
+                </div>
+            </div>
+            <br>
+               <br>
+          <div class="btn-center">
+                <button type="submit" class="btn btn-dark">Sign in</button>
+            </div>
+        </form>
+        <br>
+
+    </div>
+</div>
+
+{% endblock %}

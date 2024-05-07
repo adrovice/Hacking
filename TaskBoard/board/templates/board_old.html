@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}
+  Home
+{% endblock %}
+
+{% block content %}
+<style>
+    .outer-container {
+        background-image: url('{{ url_for('static', filename='board.jpg') }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 20px; /* Falls gewünscht, um den Inhalt etwas vom Rand des Hintergrundbilds wegzuschieben */
+    }
+
+</style>
+<br>
+<h2 class="text-center">Task board</h2>
+<div class="container mt-5 bg-light outer-container">
+    <br>
+    <div class="d-flex justify-content-center">
+        <div class="d-flex flex-wrap justify-content-center" style="max-width: 100%;">
+            {% for row in items %}
+            <div class="card m-2" style="width: 20rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ row[2] }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ row[1] }}</h6>
+                    <p class="card-text">{{ row[3] }}</p>
+                    <p class="card-text">
+                        {% if row[4] == 1 %}
+                            High Priority
+                        {% elif row[4] == 2 %}
+                            Medium Priority
+                        {% elif row[4] == 3 %}
+                            Low Priority
+                        {% endif %}
+                    </p>
+                    <button type="button" class="btn btn-secondary btn-block mx-auto mb-2" style="width: 280px;" onclick="showDescription('{{ row[5] | safe}}', {{ row[0] }})">More Info</button>
+                </div>
+                <div class="card-footer" style="display: none;">
+                    <b>Description:</b> <span id="description_{{ row[0] | safe}}"></span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+   <br>
+</div>
+
+
+
+<script>
+function showDescription(description, taskId) {
+    var descriptionSpan = document.getElementById('description_' + taskId);
+    var button = event.target;
+
+    if (descriptionSpan.innerText.trim() === '') {
+        descriptionSpan.innerText = description;
+        descriptionSpan.parentElement.style.display = 'block';
+        button.innerText = 'Hide';
+    } else {
+        descriptionSpan.innerText = '';
+        descriptionSpan.parentElement.style.display = 'none';
+        button.innerText = 'More Info';
+    }
+}
+</script>
+
+{% endblock %}

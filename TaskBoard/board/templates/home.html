@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}
+  Home
+{% endblock %}
+
+{% block content %}
+<style>
+      body {
+        background-image: url('{{ url_for('static', filename='board.jpg') }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+        .info-box {
+        background-color: rgba(255, 255, 255, 0.85); /* Weiße Hintergrundfarbe mit Transparenz */
+        padding: 20px; /* Abstand um den Inhalt herum */
+        border-radius: 10px; /* Abgerundete Ecken */
+    }
+</style>
+<br>
+      <div class="container mt-5  info-box">
+    <h1 class="text-center">Task Board</h1>
+    <p class="text-center">Welcome to the Task Board! The Task Board is a central tool for organizing and managing tasks for our team.</p>
+
+    <div class="d-flex justify-content-center">
+
+        <div class="ml-3">
+            <h2 class="text-center">How does the board work?</h2>
+            <ul>
+                <li><strong>To Do:</strong> This is where new tasks are created and placed that still need to be worked on.</li>
+                <li><strong>In Progress:</strong> Tasks assigned to a team member and currently being worked on are located in this section.</li>
+                <li><strong>Review:</strong> After a task is completed, it is placed here for review by other team members.</li>
+                <li><strong>Done:</strong> Tasks that have been successfully completed are placed here.</li>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <a href="/login" class="btn btn-dark d-block mx-auto" style="width: 200px;">Login</a>
+</div>
+
+<br>
+
+
+{% endblock %}

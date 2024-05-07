@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login Page
+{% endblock %}
+
+{% block content %}
+
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+       body {
+        background-image: url('{{ url_for('static', filename='board.jpg') }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+
+
+    .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        z-index: 1;
+        width: 60%;
+        margin-top: 50px;
+        max-width: 80%;
+        height: auto;
+        max-height: 80%;
+        overflow-y: auto;
+    }
+</style>
+<body class="text-center">
+    <form method="POST" class="form-register" action="/task_entry" style="color:black;">
+        <div class="container">
+            <br>
+            <img class="mb-4" src="static/satellit.png" alt="" style="width:200px;">
+            <br>
+            <h1 class="h3 mb-3 font-weight-normal">
+                Please Enter New Task
+            </h1>
+            <div class="row">
+                <div class="col">
+                    <label for="Username" class="form-label">Username</label>
+                    <input type="text" id="Username" name="Username" class="form-control">
+                </div>
+                <div class="col">
+                    <label for="Title" class="form-label">Title</label>
+                    <input type="text" id="Title" name="Title" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="Status" class="form-label">Status</label>
+                    <select class="form-select" id="Status" name="Status" aria-label="Default select example">
+                        <option selected>Select a Status</option>
+                        <option value="ToDo">ToDo</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Review">Review</option>
+                        <option value="Done">Done</option>
+
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="Priority" class="form-label">Priority</label>
+                    <select class="form-select" id="Priority" name="Priority" aria-label="Default select example">
+                        <option selected>Select a Priority</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <label for="Description" class="form-label">Description</label>
+            <textarea class="form-control" id="Description" name="Description" rows="3"></textarea>
+            <br>
+            <button type="submit" class="btn btn-dark">Enter</button>
+        </div>
+    </form>
+</body>
+
+{% endblock %}

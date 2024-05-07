@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}
+   LogIn
+{% endblock %}
+
+{% block content %}
+
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background-image: url('{{ url_for('static', filename='board.jpg') }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .login-form {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        z-index: 1;
+        width: 40%;
+        max-width: 80%;
+        height: auto;
+        max-height: 80%;
+        overflow-y: auto;
+    }
+
+    .btn-center {
+        text-align: center;
+    }
+</style>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<body class="text-center bg-light">
+<br>
+<br>
+    <div class="container">
+
+        <form method="POST" class="login-form form-register" action="/login" style="color:black">
+            <br>
+            <img class="mb-4 mx-auto d-block" src="{{ url_for('static', filename='travel.png') }}" alt="" style="width:50%">
+            <br>
+            <h1 class="h3 mb-3 font-weight-normal">
+                Please Log in
+            </h1>
+            <div class="row">
+                <div class="col-sm-6 offset-sm-3">
+                    <label for="Username" class="form-label">Username</label>
+                    <input type="text" id="Username" name="Username" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-6 offset-sm-3">
+                    <label for="Password" class="form-label">Password</label>
+                    <input type="password" id="Password" name="Password" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="btn-center">
+                <button type="submit" class="btn btn-dark">Login</button>
+
+            </div>
+             <br>
+            <p>Don't have an account? <a href="/register">Create Account</a></p>
+        </form>
+
+
+    </div>
+
+
+</body>
+
+{% endblock %}

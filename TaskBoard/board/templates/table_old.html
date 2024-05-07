@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}
+    This is the ticket table
+{% endblock %}
+
+{% block content %}
+<br>
+<br>
+   <table class="table table-hover">
+ <thead>
+    <tr>
+      <th scope="col">Task</th>
+      <th scope="col">User</th>
+      <th scope="col">Title</th>
+      <th scope="col">Status</th>
+      <th scope="col">Priority</th>
+      <th scope="col">More Info</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for row in items%}
+    <tr>
+    <td>{{ row[0] }}</td>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}</td>
+    <td>{{ row[3] }}</td>
+    <td>{{ row[4] }}</td>
+    <td>
+          <button id="button_{{row[0]}}" type="button" class="btn btn-secondary" onclick="showDescription({{row[0]}}, '{{row[5]}}')">More Info</button>
+      </td>
+    </tr>
+    <tr id="new_row_{{row[0]}}" style="display: none;">
+        <td colspan="6">
+            <div id="new_row_content_{{row[0]}}" class="text-center p-4 bg-light">
+                <b>Description:</b> {{ row[5] }}
+            </div>
+        </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+    </table>
+<script>
+function showDescription(taskId, description) {
+    var newRow = document.getElementById('new_row_' + taskId);
+    var button = document.getElementById('button_' + taskId);
+
+    if (newRow.style.display === 'none') {
+        newRow.style.display = 'table-row';
+        document.getElementById('new_row_content_' + taskId).innerHTML = "<b>Description:</b> " + description;
+        if (button) {
+            button.innerText = "Hide";
+        }
+    } else {
+        newRow.style.display = 'none';
+        if (button) {
+            button.innerText = "More Info";
+        }
+    }
+}
+
+</script>
+{% endblock %}

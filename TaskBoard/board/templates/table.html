@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+    This is the ticket table
+{% endblock %}
+
+{% block content %}
+<br>
+<br>
+   <table class="table table-hover">
+ <thead>
+    <tr>
+      <th scope="col">Task</th>
+      <th scope="col">User</th>
+      <th scope="col">Title</th>
+      <th scope="col">Status</th>
+      <th scope="col">Priority</th>
+      <th scope="col">More Info</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for item in items %}
+    <tr>
+    <td>{{ item[0] }}</td>
+    <td>{{ item[1] }}</td>
+    <td>{{ item[2] }}</td>
+    <td>{{ item[3] }}</td>
+    <td>{{ item[4] }}</td>
+    <td>
+         <a href="/task_item/{{ item[0] }}">
+        <button type="button" class="btn">More Info</button></a>
+      </td>
+    </tr>
+
+  {% endfor %}
+  </tbody>
+    </table>
+
+{% endblock %}
